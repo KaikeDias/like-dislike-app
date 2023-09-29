@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { TopicList } from "./components/topicList";
+import {TopicForm} from "./components/topicForm";
 
 export function HomePage() {
     const [topics, setTopics] = useState<Topic[]>([
@@ -15,38 +16,42 @@ export function HomePage() {
             created_at: new Date(),
             tags: ["React", "Hooks", "Frontend"],
             active: true,
-            upVote: 10,
-            downVote: 4
+            upVote:0,
+            downVote: 0
         },
-        // {
-        //     id: uuidv4(),
-        //     description: "Node.js Best Practices",
-        //     author: {
-        //         name: "Bob",
-        //         city: "San Francisco",
-        //         country: "USA",
-        //     },
-        //     created_at: new Date(),
-        //     tags: ["Node.js", "Backend"],
-        //     active: true,
-        //     upVote: 2,
-        //     downVote: 6
-        // },
-        // {
-        //     id: uuidv4(),
-        //     description: "Introduction to TypeScript",
-        //     author: {
-        //       name: "Charlie",
-        //       city: "London",
-        //       country: "UK",
-        //     },
-        //     created_at: new Date(),
-        //     tags: ["TypeScript", "Frontend", "Backend"],
-        //     active: false,
-        //     upVote: 15,
-        //     downVote: 0
-        // },
+        {
+            id: uuidv4(),
+            description: "Node.js Best Practices",
+            author: {
+                name: "Bob",
+                city: "San Francisco",
+                country: "USA",
+            },
+            created_at: new Date(),
+            tags: ["Node.js", "Backend"],
+            active: true,
+            upVote: 2,
+            downVote: 6
+        },
+        {
+            id: uuidv4(),
+            description: "Introduction to TypeScript",
+            author: {
+              name: "Charlie",
+              city: "London",
+              country: "UK",
+            },
+            created_at: new Date(),
+            tags: ["TypeScript", "Frontend", "Backend"],
+            active: false,
+            upVote: 15,
+            downVote: 0
+        },
     ])
+
+    const handleAddTopic = (newTopic: Topic) => {
+        setTopics([...topics, newTopic]);
+      }
 
     const handleLike = (topicId: string) => {
         const updatedTopics = topics.map((topic) =>
@@ -66,6 +71,7 @@ export function HomePage() {
 
     return (
         <>
+            <TopicForm onAddTopic={handleAddTopic} />
             <TopicList topics={topics} onLike={handleLike} onDislike={handleDislike}/>
         </>
     )

@@ -1,0 +1,34 @@
+/* Classe para estilizar o input */
+.input-style {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0; /* Cor de fundo */
+    color: #333; /* Cor do texto */
+  }
+  
+  /* Estilo para o botão */
+  button {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Estilize os rótulos (labels) se necessário */
+  label {
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+  }
+  
+  /* Estilize o formulário */
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
