@@ -1,0 +1,63 @@
+li {
+    list-style: none;
+}
+
+.card {
+    border: 2px solid white;
+    width: 40rem;
+    height: 15rem;
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description-text {
+    font-size: 2rem;
+}
+  
+.tag {
+    padding: 4px 4px; 
+    background-color: gray; 
+    color: white; 
+    border-radius: 4px; 
+    margin-right: 4px; 
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.action-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.like-button {
+    order: -1;
+    margin-right: 5px;
+}
+
+.balance {
+    order: 0;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.dislike-button {
+    order: 1
+}
+
+.author-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 8rem;
+}
+
