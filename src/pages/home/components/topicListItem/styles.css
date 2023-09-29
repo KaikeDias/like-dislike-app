@@ -5,8 +5,15 @@ li {
 .card {
     border: 2px solid white;
     width: 40rem;
-    height: 15rem;
-    padding: 10px;
+    height: 16rem;
+    margin: 1rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 6px;
+    color: #333; /* Cor do texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.253); 
 }
 
 .header {
@@ -50,8 +57,20 @@ li {
     margin-right: 5px;
 }
 
+.positive-balance {
+    color: #4CAF50; 
+}
+  
+.negative-balance {
+    color: #FF5733; 
+}
+
 .dislike-button {
     order: 1
+}
+
+.progress {
+    width: 5rem;
 }
 
 .author-info {
