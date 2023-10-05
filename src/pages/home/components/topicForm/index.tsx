@@ -31,6 +31,7 @@ export function TopicForm({ onAddTopic }: TopicFormProps) {
       upVote: 0, // Inicia com zero votos positivos
       downVote: 0, // Inicia com zero votos negativos
     };
+    
 
     onAddTopic(newTopic);
   }
