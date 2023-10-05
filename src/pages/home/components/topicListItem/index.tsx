@@ -13,7 +13,7 @@ export function TopicListItem({
   onDislike,
 }: TopicListItemProps) {
   // Formatar a data para exibir apenas o dia da semana
-  const formattedDate = format(topic.created_at, "EEEE");
+  const formattedDate = format(new Date(topic.created_at), "EEEE");
 
   const balance = topic.upVote - topic.downVote;
 
