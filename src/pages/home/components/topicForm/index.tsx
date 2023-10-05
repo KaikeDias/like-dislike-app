@@ -6,6 +6,7 @@ interface TopicFormProps {
   onAddTopic: (newTopic: Topic) => void;
 }
 
+
 export function TopicForm({ onAddTopic }: TopicFormProps) {
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
@@ -31,7 +32,7 @@ export function TopicForm({ onAddTopic }: TopicFormProps) {
       upVote: 0, // Inicia com zero votos positivos
       downVote: 0, // Inicia com zero votos negativos
     };
-    
+
 
     onAddTopic(newTopic);
   }
