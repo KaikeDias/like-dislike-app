@@ -1,56 +1,78 @@
-import { useEffect, useReducer} from "react";
+import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { TopicList } from "./components/topicList";
-import { TopicForm } from "./components/topicForm";
-import { ActionType, TopicReducer } from "./reducers/topicReducer";
+import {TopicForm} from "./components/topicForm";
 
 export function HomePage() {
-  const [{ topics }, dispatch] = useReducer(TopicReducer, { topics: [] });
-
-  useEffect(() => {
-    fetch("http://localhost:3000/topics")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({ type: ActionType.LOADED, payload: { topics: data } });
-      });
-  }, []);
-
-  const handleAddTopic = async (newTopic: Topic) => {
-    try {
-      const response = await fetch("http://localhost:3000/topics", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    const [topics, setTopics] = useState<Topic[]>([
+        {
+            id: uuidv4(),
+            description: "Discussão sobre React Hooks",
+            author: {
+              name: "Alice",
+              city: "New York",
+              country: "USA",
+            },
+            created_at: new Date(),
+            tags: ["React", "Hooks", "Frontend"],
+            active: true,
+            upVote:0,
+            downVote: 0
         },
-        body: JSON.stringify(newTopic),
-      });
+        {
+            id: uuidv4(),
+            description: "Node.js Best Practices",
+            author: {
+                name: "Bob",
+                city: "San Francisco",
+                country: "USA",
+            },
+            created_at: new Date(),
+            tags: ["Node.js", "Backend"],
+            active: true,
+            upVote: 2,
+            downVote: 6
+        },
+        {
+            id: uuidv4(),
+            description: "Introduction to TypeScript",
+            author: {
+              name: "Charlie",
+              city: "London",
+              country: "UK",
+            },
+            created_at: new Date(),
+            tags: ["TypeScript", "Frontend", "Backend"],
+            active: false,
+            upVote: 15,
+            downVote: 0
+        },
+    ])
 
-      if (!response.ok) {
-        throw new Error("Erro ao adicionar o tópico");
+    const handleAddTopic = (newTopic: Topic) => {
+        setTopics([...topics, newTopic]);
       }
 
-      const addedTopic = await response.json();
-      dispatch({ type: ActionType.ADDED, payload: { topic: addedTopic } });
-    } catch (error) {
-      console.error(error);
+    const handleLike = (topicId: string) => {
+        const updatedTopics = topics.map((topic) =>
+            topic.id === topicId ? { ...topic, upVote: topic.upVote + 1 } : topic
+            );
+        
+        setTopics(updatedTopics);
     }
-  };
+    
+    const handleDislike = (topicId: string) => {
+        const updatedTopics = topics.map((topic) =>
+            topic.id === topicId ? { ...topic, downVote: topic.downVote + 1 } : topic
+            );
+        
+        setTopics(updatedTopics);
+    }
 
-  const handleLike = (topicId: string) => {
-    dispatch({ type: ActionType.LIKE, payload: { topicId } });
-  };
-
-  const handleDislike = (topicId: string) => {
-    dispatch({ type: ActionType.DISLIKE, payload: { topicId } });
-  };
-
-  return (
-    <>
-      <TopicForm onAddTopic={handleAddTopic} />
-      <TopicList
-        topics={topics}
-        onLike={handleLike}
-        onDislike={handleDislike}
-      />
-    </>
-  );
+    return (
+        <>
+            <TopicForm onAddTopic={handleAddTopic} />
+            <TopicList topics={topics} onLike={handleLike} onDislike={handleDislike}/>
+        </>
+    )
 }
