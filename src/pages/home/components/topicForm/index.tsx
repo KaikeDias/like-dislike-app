@@ -1,12 +1,10 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import "./styles.css"
+import "./styles.css";
+import { HomeActionsContext } from '../../context/topicContext';
 
-interface TopicFormProps {
-  onAddTopic: (newTopic: Topic) => void;
-}
-
-export function TopicForm({ onAddTopic }: TopicFormProps) {
+export function TopicForm() {
+  const { handleAddTopic } = useContext(HomeActionsContext) || {};
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
 
@@ -32,7 +30,7 @@ export function TopicForm({ onAddTopic }: TopicFormProps) {
       downVote: 0, // Inicia com zero votos negativos
     };
 
-    onAddTopic(newTopic);
+    handleAddTopic?.(newTopic);
   }
 
   return (
@@ -64,5 +62,3 @@ export function TopicForm({ onAddTopic }: TopicFormProps) {
     </div>
   );
 }
-
-

@@ -14,7 +14,7 @@ type ActionLoaded = { type: ActionType.LOADED; payload: { topics: Topic[] } };
 type ActionLike = { type: ActionType.LIKE; payload: { topicId: string } };
 type ActionDislike = { type: ActionType.DISLIKE; payload: { topicId: string } };
 
-type Action = ActionAdded | ActionLoaded | ActionLike | ActionDislike;
+export type Action = ActionAdded | ActionLoaded | ActionLike | ActionDislike;
 
 function reducer(state: TopicState, action: Action): TopicState {
   switch (action.type) {

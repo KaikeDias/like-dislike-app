@@ -1,17 +1,15 @@
+import React, { useContext } from "react";
+import { HomeStateContext } from "../../context/topicContext";
 import { TopicListItem } from "../topicListItem";
 
-interface TopicListProps {
-    topics: Topic[];
-    onLike: (topicId: string) => void;
-    onDislike: (topicId: string) => void;
-}
+export function TopicList() {
+    const { topics } = useContext(HomeStateContext) || {};
 
-export function TopicList({topics,  onLike, onDislike }: TopicListProps) {
     return (
         <>
             <h3>Tópicos</h3>
             <ul>
-                {topics.map(topic => <TopicListItem key={topic.id} topic={topic} onLike={onLike} onDislike={onDislike}/>)}
+                {topics?.map(topic => <TopicListItem key={topic.id} topic={topic} />)}
             </ul>
         </>
     )

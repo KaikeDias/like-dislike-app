@@ -68,6 +68,22 @@
       "active": true,
       "upVote": 0,
       "downVote": 0
+    },
+    {
+      "id": "e9b474fb-c593-418e-9646-cb78cf04cd87",
+      "description": "asdas",
+      "author": {
+        "name": "Kaike",
+        "country": "sd",
+        "city": "Teresina"
+      },
+      "created_at": "2023-10-09T02:24:40.406Z",
+      "tags": [
+        "asdasd"
+      ],
+      "active": true,
+      "upVote": 0,
+      "downVote": 0
     }
   ]
 }

@@ -1,17 +1,15 @@
 import { format } from "date-fns";
+import React, { useContext } from "react";
 import "./styles.css";
+import { HomeActionsContext } from "../../context/topicContext";
 
 interface TopicListItemProps {
   topic: Topic;
-  onLike: (topicId: string) => void;
-  onDislike: (topicId: string) => void;
 }
 
-export function TopicListItem({
-  topic,
-  onLike,
-  onDislike,
-}: TopicListItemProps) {
+export function TopicListItem({ topic }: TopicListItemProps) {
+  const { handleLike, handleDislike } = useContext(HomeActionsContext) || {};
+  
   // Formatar a data para exibir apenas o dia da semana
   const formattedDate = format(new Date(topic.created_at), "EEEE");
 
@@ -42,14 +40,14 @@ export function TopicListItem({
           <div className="votes-area">
             <div className="action-bar">
               <div className="like-button">
-                <button onClick={() => onLike(topic.id)}>
+                <button onClick={() => handleLike!(topic.id)}>
                   <span role="img" aria-label="Thumbs up">
                     👍
                   </span>
                 </button>
               </div>
               <div className="dislike-button">
-                <button onClick={() => onDislike(topic.id)}>
+                <button onClick={() => handleDislike!(topic.id)}>
                   <span role="img" aria-label="Thumbs down">
                     👎
                   </span>
