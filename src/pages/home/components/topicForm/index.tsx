@@ -12,7 +12,7 @@ export function TopicForm() {
     event.preventDefault();
 
     if (description.trim() === '') {
-      return; // Não permite criar um tópico vazio
+      return; 
     }
 
     const newTopic: Topic = {
@@ -20,14 +20,14 @@ export function TopicForm() {
       description: description,
       author: {
         name: 'Kaike', 
-        country: "sd",// Substitua pelo nome do autor real
-        city: 'Teresina', // Substitua pela cidade real do autor
+        country: "sd",
+        city: 'Teresina',
       },
       created_at: new Date(),
-      tags: tags.split(',').map(tag => tag.trim()), // Divide as tags por vírgulas e remove espaços extras
+      tags: tags.split(',').map(tag => tag.trim()), 
       active: true,
-      upVote: 0, // Inicia com zero votos positivos
-      downVote: 0, // Inicia com zero votos negativos
+      upVote: 0,
+      downVote: 0,
     };
 
     handleAddTopic?.(newTopic);

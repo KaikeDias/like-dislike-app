@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./styles.css";
 import { HomeActionsContext } from "../../context/topicContext";
 

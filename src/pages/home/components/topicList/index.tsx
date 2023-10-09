@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { HomeStateContext } from "../../context/topicContext";
 import { TopicListItem } from "../topicListItem";
 
